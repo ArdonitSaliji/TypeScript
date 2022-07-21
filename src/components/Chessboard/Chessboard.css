@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.black {
+  background: rgb(105, 141, 68);
+}
+.white {
+  background-color: mintcream;
+}
+.chess {
+  display: grid;
+  grid-template-columns: repeat(8, 100px);
+  grid-template-rows: repeat(8, 100px);
+  height: 802px;
+  width: 802px;
+  border: 1px solid black;
+}
