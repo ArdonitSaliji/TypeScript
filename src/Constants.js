@@ -1,12 +1,19 @@
-export const verticalAxis = ['1', '2', '3', '4', '5', '6', '7', '8']
-export const horizontalAxis = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-export var TeamType
+export const VERTICAL_AXIS = ['1', '2', '3', '4', '5', '6', '7', '8']
+export const HORIZONTAL_AXIS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+
+export const GRID_SIZE = 100
+
+export const samePosition = (p1, p2) => {
+  return p1.x === p2.x && p1.y === p2.y
+}
+
+export let TeamType
 ;(function (TeamType) {
   TeamType[(TeamType['OPPONENT'] = 0)] = 'OPPONENT'
   TeamType[(TeamType['OUR'] = 1)] = 'OUR'
 })(TeamType || (TeamType = {}))
 
-export var PieceType
+export let PieceType
 ;(function (PieceType) {
   PieceType[(PieceType['PAWN'] = 0)] = 'PAWN'
   PieceType[(PieceType['BISHOP'] = 1)] = 'BISHOP'
@@ -15,16 +22,6 @@ export var PieceType
   PieceType[(PieceType['QUEEN'] = 4)] = 'QUEEN'
   PieceType[(PieceType['KING'] = 5)] = 'KING'
 })(PieceType || (PieceType = {}))
-export const Position = {
-  x: '',
-  y: '',
-}
-export const Piece = {
-  image: '',
-  position: Position,
-  type: PieceType,
-  team: TeamType,
-}
 
 export const initialBoardState = [
   {
