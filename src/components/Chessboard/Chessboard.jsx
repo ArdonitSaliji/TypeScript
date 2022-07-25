@@ -1,7 +1,7 @@
 import React from 'react'
 import './Chessboard.css'
 import Tile from '../Tile/Tile'
-import Referee from '../../Referee/Referee'
+import Referee from '../../Referee/Rules/Referee'
 import {
   VERTICAL_AXIS,
   HORIZONTAL_AXIS,
