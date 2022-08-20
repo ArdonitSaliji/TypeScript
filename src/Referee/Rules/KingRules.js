@@ -1,4 +1,4 @@
-import { tileIsOccupied, tileIsEmptyOrOccupied } from './GeneralRules'
+import { tileIsOccupied, tileIsEmptyOrOccupiedByOpponent } from './GeneralRules'
 import { samePosition } from '../../Constants'
 export const kingMove = (initialPosition, desiredPosition, team, boardState) => {
   for (let i = 1; i < 2; i++) {
@@ -16,7 +16,7 @@ export const kingMove = (initialPosition, desiredPosition, team, boardState) => 
     }
 
     if (samePosition(passedPosition, desiredPosition)) {
-      if (tileIsEmptyOrOccupied(passedPosition, boardState, team)) {
+      if (tileIsEmptyOrOccupiedByOpponent(passedPosition, boardState, team)) {
         return true
       }
     } else {

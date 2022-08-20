@@ -160,23 +160,24 @@ const Chessboard = () => {
         const teamType = piece.team === TeamType.OUR ? 'w' : 'b'
         let image = ''
         switch (pieceType) {
-          case PieceType.ROOK:
+          case PieceType.ROOK: {
             image = 'rook'
             break
-
-          case PieceType.BISHOP:
+          }
+          case PieceType.BISHOP: {
             image = 'bishop'
             break
-
-          case PieceType.KNIGHT:
+          }
+          case PieceType.KNIGHT: {
             image = 'knight'
             break
-
-          case PieceType.QUEEN:
+          }
+          case PieceType.QUEEN: {
             image = 'queen'
             break
+          }
         }
-        piece.image = `images/${image}_${teamType}.png`
+        piece.image = process.env.PUBLIC_URL + `/images/${image}_${teamType}.png`
       }
 
       results.push(piece)
@@ -207,22 +208,22 @@ const Chessboard = () => {
         <div className='modal-body'>
           <img
             onClick={() => promotePawn(PieceType.ROOK)}
-            src={`images/rook_${promotionTeamType()}.png`}
+            src={require(`../../../public/images/rook_${promotionTeamType()}.png`)}
             alt=''
           />
           <img
             onClick={() => promotePawn(PieceType.BISHOP)}
-            src={`images/bishop_${promotionTeamType()}.png`}
+            src={require(`../../../public/images/bishop_${promotionTeamType()}.png`)}
             alt=''
           />
           <img
             onClick={() => promotePawn(PieceType.KNIGHT)}
-            src={`images/knight_${promotionTeamType()}.png`}
+            src={require(`../../../public/images/knight_${promotionTeamType()}.png`)}
             alt=''
           />
           <img
             onClick={() => promotePawn(PieceType.QUEEN)}
-            src={`images/queen_${promotionTeamType()}.png`}
+            src={require(`../../../public/images/queen_${promotionTeamType()}.png`)}
             alt=''
           />
         </div>
@@ -231,7 +232,7 @@ const Chessboard = () => {
         onMouseMove={(e) => movePiece(e)}
         onMouseDown={(e) => grabPiece(e)}
         onMouseUp={(e) => dropPiece(e)}
-        className='chess'
+        id='chessboard'
         ref={chessboardRef}
       >
         {board}

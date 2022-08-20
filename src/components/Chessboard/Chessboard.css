@@ -3,12 +3,9 @@
   padding: 0;
   margin: 0;
 }
+
 body {
   background-color: #201f20;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -18,12 +15,12 @@ body {
 .white {
   background-color: mintcream;
 }
-.chess {
+#chessboard {
   display: grid;
-  grid-template-columns: repeat(8, 100px);
-  grid-template-rows: repeat(8, 100px);
-  height: 802px;
-  width: 802px;
+  grid-template-columns: repeat(8, 6.25rem);
+  grid-template-rows: repeat(8, 6.25rem);
+  height: 50rem;
+  width: 50rem;
   border: 1px solid black;
 }
 #pawn-promotion-modal {
@@ -36,19 +33,19 @@ body {
 .hidden {
   display: none;
 }
-#pawn-promotion-modal .modal-body {
-  top: calc(50% - 150px);
-  left: calc(50% - 400px);
+#pawn-promotion-modal > .modal-body {
+  top: calc(50% - 9.4rem);
+  left: calc(50% - 25rem);
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  width: 800px;
-  height: 300px;
+  width: 50rem;
+  height: 18.75rem;
   background-color: rgba(0, 0, 0, 0.8);
 }
 #pawn-promotion-modal .modal-body img {
-  height: 120px;
+  height: 7.5rem;
   border-radius: 50%;
   padding: 20px;
 }

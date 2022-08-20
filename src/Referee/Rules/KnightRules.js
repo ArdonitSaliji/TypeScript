@@ -1,4 +1,4 @@
-import { tileIsEmptyOrOccupied } from './GeneralRules'
+import { tileIsEmptyOrOccupiedByOpponent } from './GeneralRules'
 
 export const knightMove = (initialPosition, desiredPosition, team, boardState) => {
   for (let i = -1; i < 2; i += 2) {
@@ -7,16 +7,16 @@ export const knightMove = (initialPosition, desiredPosition, team, boardState) =
 
       if (desiredPosition.y - initialPosition.y === 2 * i) {
         if (desiredPosition.x - initialPosition.x === j) {
-          if (tileIsEmptyOrOccupied(desiredPosition, boardState, team)) {
+          if (tileIsEmptyOrOccupiedByOpponent(desiredPosition, boardState, team)) {
             return true
           }
         }
       }
-      // right and left side movoment
+      // Right and left side movoment
 
       if (desiredPosition.x - initialPosition.x === 2 * i) {
         if (desiredPosition.y - initialPosition.y === j) {
-          if (tileIsEmptyOrOccupied(desiredPosition, boardState, team)) {
+          if (tileIsEmptyOrOccupiedByOpponent(desiredPosition, boardState, team)) {
             return true
           }
         }

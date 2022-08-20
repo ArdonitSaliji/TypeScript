@@ -1,26 +1,31 @@
-import { tileIsOccupied, tileIsEmptyOrOccupied } from './GeneralRules'
+import { tileIsOccupied, tileIsEmptyOrOccupiedByOpponent } from './GeneralRules'
 import { samePosition } from '../../Constants'
 export const bishopMove = (initialPosition, desiredPosition, team, boardState) => {
   for (let i = 1; i < 8; i++) {
-    // up right move
+    // up right movement
     if (desiredPosition.x > initialPosition.x && desiredPosition.y > initialPosition.y) {
       let passedPosition = { x: initialPosition.x + i, y: initialPosition.y + i }
+      //Check if the tile is the destination tile
       if (samePosition(passedPosition, desiredPosition)) {
-        if (tileIsEmptyOrOccupied(passedPosition, boardState, team)) {
+        //Dealing with destination tile
+        if (tileIsEmptyOrOccupiedByOpponent(passedPosition, boardState, team)) {
           return true
         }
       } else {
+        //Dealing with passing tile
         if (tileIsOccupied(passedPosition, boardState)) {
           break
         }
       }
     }
 
-    // bottom right move
+    // bottom right movement
     if (desiredPosition.x > initialPosition.x && desiredPosition.y < initialPosition.y) {
       let passedPosition = { x: initialPosition.x + i, y: initialPosition.y - i }
+      //Check if the tile is the destination tile
       if (samePosition(passedPosition, desiredPosition)) {
-        if (tileIsEmptyOrOccupied(passedPosition, boardState, team)) {
+        //Dealing with destination tile
+        if (tileIsEmptyOrOccupiedByOpponent(passedPosition, boardState, team)) {
           return true
         }
       } else {
@@ -30,11 +35,13 @@ export const bishopMove = (initialPosition, desiredPosition, team, boardState) =
       }
     }
 
-    // bottom left move
+    // bottom left movement
     if (desiredPosition.x < initialPosition.x && desiredPosition.y < initialPosition.y) {
       let passedPosition = { x: initialPosition.x - i, y: initialPosition.y - i }
+      //Check if the tile is the destination tile
       if (samePosition(passedPosition, desiredPosition)) {
-        if (tileIsEmptyOrOccupied(passedPosition, boardState, team)) {
+        //Dealing with destination tile
+        if (tileIsEmptyOrOccupiedByOpponent(passedPosition, boardState, team)) {
           return true
         }
       } else {
@@ -43,11 +50,13 @@ export const bishopMove = (initialPosition, desiredPosition, team, boardState) =
         }
       }
     }
-
+    //Top left movement
     if (desiredPosition.x < initialPosition.x && desiredPosition.y > initialPosition.y) {
       let passedPosition = { x: initialPosition.x - i, y: initialPosition.y + i }
+      //Check if the tile is the destination tile
       if (samePosition(passedPosition, desiredPosition)) {
-        if (tileIsEmptyOrOccupied(passedPosition, boardState, team)) {
+        //Dealing with destination tile
+        if (tileIsEmptyOrOccupiedByOpponent(passedPosition, boardState, team)) {
           return true
         }
       } else {
