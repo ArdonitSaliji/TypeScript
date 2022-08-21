@@ -28,3 +28,48 @@
 .tile img {
   width: 5rem;
 }
+@media screen and (max-height: 900px), screen and (max-width: 1000px) {
+  .tile {
+    width: 5rem;
+    height: 5rem;
+  }
+  .tile .chess-piece {
+    width: 5rem;
+    height: 5rem;
+    background-size: 4rem;
+  }
+}
+
+@media screen and (max-height: 700px), screen and (max-width: 700px) {
+  .tile {
+    width: 4rem;
+    height: 4rem;
+  }
+  .tile .chess-piece {
+    width: 4rem;
+    height: 4rem;
+    background-size: 3.2rem;
+  }
+}
+@media screen and (max-height: 550px), screen and (max-width: 550px) {
+  .tile {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+  .tile .chess-piece {
+    width: 3.2rem;
+    height: 3.2rem;
+    background-size: 2.56rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .tile {
+    width: 2.592rem;
+    height: 2.592rem;
+  }
+  .tile .chess-piece {
+    width: 2.592rem;
+    height: 2.592rem;
+    background-size: 2.048rem;
+  }
+}
