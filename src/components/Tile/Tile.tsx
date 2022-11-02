@@ -1,7 +1,10 @@
-import React from 'react'
 import './Tile.css'
+interface Props {
+  image?: string
+  number: number
+}
 
-const Tile = ({ number, image }) => {
+export default function Tile({ number, image }: Props) {
   if (number % 2 === 0) {
     return (
       <div className='tile black-tile'>
@@ -16,5 +19,3 @@ const Tile = ({ number, image }) => {
     )
   }
 }
-
-export default Tile

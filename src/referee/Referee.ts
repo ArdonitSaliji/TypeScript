@@ -1,14 +1,15 @@
-/* eslint-disable default-case */
-import { PieceType, TeamType } from '../../Constants.js'
-import { bishopMove } from './BishopRules.js'
-import { kingMove } from './KingRules.js'
-import { knightMove } from './KnightRules.js'
-import { pawnMove } from './PawnRules.js'
-import { queenMove } from './QueenRules.js'
-import { rookMove } from './RookRules.js'
+import { PieceType, TeamType, Piece, Position } from '../Constants'
+
+import { pawnMove, knightMove, bishopMove, rookMove, queenMove, kingMove } from './rules'
 
 class Referee {
-  isEnPassantMove(initialPosition, desiredPosition, type, team, boardState) {
+  isEnPassantMove(
+    initialPosition: Position,
+    desiredPosition: Position,
+    type: PieceType,
+    team: TeamType,
+    boardState: Piece[]
+  ) {
     const pawnDirection = team === TeamType.OUR ? 1 : -1
 
     if (type === PieceType.PAWN) {
@@ -32,7 +33,13 @@ class Referee {
     return false
   }
 
-  isValidMove(initialPosition, desiredPosition, type, team, boardState) {
+  isValidMove(
+    initialPosition: Position,
+    desiredPosition: Position,
+    type: PieceType,
+    team: TeamType,
+    boardState: Piece[]
+  ) {
     let validMove = false
 
     switch (type) {
@@ -54,8 +61,8 @@ class Referee {
       case PieceType.KING:
         validMove = kingMove(initialPosition, desiredPosition, team, boardState)
     }
+
     return validMove
   }
 }
-
 export default Referee

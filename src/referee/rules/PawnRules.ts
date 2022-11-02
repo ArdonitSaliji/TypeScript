@@ -1,10 +1,16 @@
-import { TeamType } from '../../Constants'
+import { Piece, Position, TeamType } from '../../Constants'
 import { tileIsOccupied, tileIsOccupiedByOpponent } from './GeneralRules'
-export const pawnMove = (initialPosition, desiredPosition, team, boardState) => {
+
+export const pawnMove = (
+  initialPosition: Position,
+  desiredPosition: Position,
+  team: TeamType,
+  boardState: Piece[]
+): boolean => {
   const specialRow = team === TeamType.OUR ? 1 : 6
   const pawnDirection = team === TeamType.OUR ? 1 : -1
 
-  // Movement logic
+  //MOVEMENT LOGIC
   if (
     initialPosition.x === desiredPosition.x &&
     initialPosition.y === specialRow &&
@@ -23,11 +29,13 @@ export const pawnMove = (initialPosition, desiredPosition, team, boardState) => 
     if (!tileIsOccupied(desiredPosition, boardState)) {
       return true
     }
-    // Attack logic
-  } else if (
+  }
+  //ATTACK LOGIC
+  else if (
     desiredPosition.x - initialPosition.x === -1 &&
     desiredPosition.y - initialPosition.y === pawnDirection
   ) {
+    //ATTACK IN UPPER OR BOTTOM LEFT CORNER
     if (tileIsOccupiedByOpponent(desiredPosition, boardState, team)) {
       return true
     }
@@ -35,9 +43,11 @@ export const pawnMove = (initialPosition, desiredPosition, team, boardState) => 
     desiredPosition.x - initialPosition.x === 1 &&
     desiredPosition.y - initialPosition.y === pawnDirection
   ) {
+    //ATTACK IN THE UPPER OR BOTTOM RIGHT CORNER
     if (tileIsOccupiedByOpponent(desiredPosition, boardState, team)) {
       return true
     }
   }
+
   return false
 }

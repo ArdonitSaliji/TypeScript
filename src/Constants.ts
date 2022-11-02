@@ -1,31 +1,42 @@
-export const VERTICAL_AXIS = ['1', '2', '3', '4', '5', '6', '7', '8']
-export const HORIZONTAL_AXIS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+export const VERTICAL_AXIS = ["1", "2", "3", "4", "5", "6", "7", "8"];
+export const HORIZONTAL_AXIS = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
-export const GRID_SIZE = 100
+export const GRID_SIZE = 100;
 
-export const samePosition = (p1, p2) => {
-  return p1.x === p2.x && p1.y === p2.y
+export function samePosition(p1: Position, p2: Position) {
+  return p1.x === p2.x && p1.y === p2.y;
 }
 
-export let TeamType
-;(function (TeamType) {
-  TeamType[(TeamType['OPPONENT'] = 0)] = 'OPPONENT'
-  TeamType[(TeamType['OUR'] = 1)] = 'OUR'
-})(TeamType || (TeamType = {}))
+export interface Position {
+  x: number;
+  y: number;
+}
 
-export let PieceType
-;(function (PieceType) {
-  PieceType[(PieceType['PAWN'] = 0)] = 'PAWN'
-  PieceType[(PieceType['BISHOP'] = 1)] = 'BISHOP'
-  PieceType[(PieceType['KNIGHT'] = 2)] = 'KNIGHT'
-  PieceType[(PieceType['ROOK'] = 3)] = 'ROOK'
-  PieceType[(PieceType['QUEEN'] = 4)] = 'QUEEN'
-  PieceType[(PieceType['KING'] = 5)] = 'KING'
-})(PieceType || (PieceType = {}))
+export enum PieceType {
+  PAWN,
+  BISHOP,
+  KNIGHT,
+  ROOK,
+  QUEEN,
+  KING,
+}
 
-export const initialBoardState = [
+export enum TeamType {
+  OPPONENT,
+  OUR,
+}
+
+export interface Piece {
+  image: string;
+  position: Position;
+  type: PieceType;
+  team: TeamType;
+  enPassant?: boolean;
+}
+
+export const initialBoardState: Piece[] = [
   {
-    image: process.env.PUBLIC_URL + `/images/rook_b.png`,
+    image: `assets/images/rook_b.png`,
     position: {
       x: 0,
       y: 7,
@@ -34,7 +45,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/knight_b.png`,
+    image: `assets/images/knight_b.png`,
     position: {
       x: 1,
       y: 7,
@@ -43,7 +54,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/bishop_b.png`,
+    image: `assets/images/bishop_b.png`,
     position: {
       x: 2,
       y: 7,
@@ -52,7 +63,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/queen_b.png`,
+    image: `assets/images/queen_b.png`,
     position: {
       x: 3,
       y: 7,
@@ -61,7 +72,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/king_b.png`,
+    image: `assets/images/king_b.png`,
     position: {
       x: 4,
       y: 7,
@@ -70,7 +81,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/bishop_b.png`,
+    image: `assets/images/bishop_b.png`,
     position: {
       x: 5,
       y: 7,
@@ -79,7 +90,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/knight_b.png`,
+    image: `assets/images/knight_b.png`,
     position: {
       x: 6,
       y: 7,
@@ -88,7 +99,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/rook_b.png`,
+    image: `assets/images/rook_b.png`,
     position: {
       x: 7,
       y: 7,
@@ -97,7 +108,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 0,
       y: 6,
@@ -106,7 +117,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 1,
       y: 6,
@@ -115,7 +126,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 2,
       y: 6,
@@ -124,7 +135,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 3,
       y: 6,
@@ -133,7 +144,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 4,
       y: 6,
@@ -142,7 +153,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 5,
       y: 6,
@@ -151,7 +162,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 6,
       y: 6,
@@ -160,7 +171,7 @@ export const initialBoardState = [
     team: TeamType.OPPONENT,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_b.png`,
+    image: `assets/images/pawn_b.png`,
     position: {
       x: 7,
       y: 6,
@@ -170,7 +181,7 @@ export const initialBoardState = [
   },
 
   {
-    image: process.env.PUBLIC_URL + `/images/rook_w.png`,
+    image: `assets/images/rook_w.png`,
     position: {
       x: 0,
       y: 0,
@@ -179,7 +190,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/knight_w.png`,
+    image: `assets/images/knight_w.png`,
     position: {
       x: 1,
       y: 0,
@@ -188,7 +199,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/bishop_w.png`,
+    image: `assets/images/bishop_w.png`,
     position: {
       x: 2,
       y: 0,
@@ -197,7 +208,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/queen_w.png`,
+    image: `assets/images/queen_w.png`,
     position: {
       x: 3,
       y: 0,
@@ -206,7 +217,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/king_w.png`,
+    image: `assets/images/king_w.png`,
     position: {
       x: 4,
       y: 0,
@@ -215,7 +226,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/bishop_w.png`,
+    image: `assets/images/bishop_w.png`,
     position: {
       x: 5,
       y: 0,
@@ -224,7 +235,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/knight_w.png`,
+    image: `assets/images/knight_w.png`,
     position: {
       x: 6,
       y: 0,
@@ -233,7 +244,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/rook_w.png`,
+    image: `assets/images/rook_w.png`,
     position: {
       x: 7,
       y: 0,
@@ -242,7 +253,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 0,
       y: 1,
@@ -251,7 +262,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 1,
       y: 1,
@@ -260,7 +271,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 2,
       y: 1,
@@ -269,7 +280,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 3,
       y: 1,
@@ -278,7 +289,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 4,
       y: 1,
@@ -287,7 +298,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 5,
       y: 1,
@@ -296,7 +307,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 6,
       y: 1,
@@ -305,7 +316,7 @@ export const initialBoardState = [
     team: TeamType.OUR,
   },
   {
-    image: process.env.PUBLIC_URL + `/images/pawn_w.png`,
+    image: `assets/images/pawn_w.png`,
     position: {
       x: 7,
       y: 1,
@@ -313,4 +324,4 @@ export const initialBoardState = [
     type: PieceType.PAWN,
     team: TeamType.OUR,
   },
-]
+];
