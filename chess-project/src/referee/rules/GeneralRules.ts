@@ -1,38 +1,42 @@
-import { Piece, Position, samePosition, TeamType } from "../../Constants";
+import { Position, Piece } from "../../components/models";
+import { TeamType } from "../../Types";
 
-export const tileIsOccupied = (position: Position, boardState: Piece[]): boolean => {
-    const piece = boardState.find((p) => samePosition(p.position, position));
+export const tileIsOccupied = (
+  position: Position,
+  boardState: Piece[]
+): boolean => {
+  const piece = boardState.find((p) => p.samePosition(position));
 
-    if (piece) {
-      return true;
-    } else {
-      return false;
-    }
+  if (piece) {
+    return true;
+  } else {
+    return false;
   }
+};
 
-export const  tileIsOccupiedByOpponent = (
-    position: Position,
-    boardState: Piece[],
-    team: TeamType
-  ): boolean => {
-    const piece = boardState.find(
-      (p) => samePosition(p.position, position) && p.team !== team
-    );
+export const tileIsOccupiedByOpponent = (
+  position: Position,
+  boardState: Piece[],
+  team: TeamType
+): boolean => {
+  const piece = boardState.find(
+    (p) => p.samePosition(position) && p.team !== team
+  );
 
-    if (piece) {
-      return true;
-    } else {
-      return false;
-    }
+  if (piece) {
+    return true;
+  } else {
+    return false;
   }
+};
 
-  export const tileIsEmptyOrOccupiedByOpponent =(
-    position: Position,
-    boardState: Piece[],
-    team: TeamType
-  ) => {
-    return (
-      !tileIsOccupied(position, boardState) ||
-      tileIsOccupiedByOpponent(position, boardState, team)
-    );
-  }
+export const tileIsEmptyOrOccupiedByOpponent = (
+  position: Position,
+  boardState: Piece[],
+  team: TeamType
+) => {
+  return (
+    !tileIsOccupied(position, boardState) ||
+    tileIsOccupiedByOpponent(position, boardState, team)
+  );
+};
